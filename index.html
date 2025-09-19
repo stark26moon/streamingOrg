@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>PROYECTOS INDIVIDUALES</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Lato:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!--     <div id="loading">
+        <div id="spinner"></div>
+    </div> -->
+    <div id="header" class="animated slideInDown" style="animation-delay:1.8s;">
+    <div id="title">Analisis de plataformas de Streaming</div><br>
+    </div>
+ <!-- <div id="title">Analisis de plataformas de Streaming</div><br> -->
+    <center>
+        <div id="middle">
+            <div id="tagline" class="animated zoomIn" style="animation-delay:1.8s;">
+                Analisis de plataformas de streaming en base al rendimiento de peliculas disponibles en cada plataforma ,
+                el analisis se realizo mediante el lenguaje python.Ademas se realizo un analisis, ETL y un analisis EDA 
+                hasta llegar a las conclusiones y opciones disponibles para su visualisacion.
+                <br>
+            </div>
+        </div> 
+    </center>
+
+    <div id="chartContainer" style="width: 100%; max-width: 700px; margin: 40px auto;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <div id="portfolio">
+         
+              <div id="work">
+
+                <div class="project">
+                     <h2>Consulta sobre cantidad de peliculas en determinado idioma</h2>
+                        <div>Para esta funcion se obtuvo la informacion particular de cada pelicula mediante el analisis paso a    paso de la informacion en el diccionario correspondiente a la fila del id de pelicula o titulo buscado
+                        los siguientes botones, el primero lleva a la forma /docs de la api para ingresar los parametro de busqueda y el segundo a la respuesta json de la misma api con un parametro cargado,debe ingrear la abreviatura correspondiente al idioma ,de la contenidas en el dataset ,de no ingresar alguna correpondiente, recibira mensaje de ingreso incorrecto e instruccion.
+                         </div>  
+
+                            <div id="seccion-enlaces-idioma" class="bloque-seccion">
+                              <h2>Consultar mediante entorno FastAPI</h2>
+
+                              <a href="#" class="btn_two"
+                                 onclick="event.preventDefault(); window.open('https://p-1-streaming.onrender.com/docs#/default/peliculas_idioma_peliculas_idioma__Idioma__get', '_blank', 'noopener');">
+                                Ir a /docs de FastAPI
+                              </a>
+
+                              <a href="https://p-1-streaming.onrender.com/peliculas_idioma/en"
+                                 target="_blank"
+                                 rel="noopener noreferrer"
+                                 class="btn_two">
+                                Ejemplo: /peliculas_idioma/en
+                              </a>
+                            </div>
+
+                            <div id="seccion-formulario-idioma" class="bloque-seccion">
+                              <h2>Buscar películas por idioma manejando respuesta de la API</h2>
+
+                              <form id="searchForm">
+                                <label for="language">Ingrese el idioma (abreviatura):</label>
+                                <input type="text" id="language" class="form-control" placeholder="Ej: en, es, fr..." required />
+                                <button type="submit" class="btn_one">Buscar cantidad de películas</button>
+                              </form>
+
+                              <div id="resultContainer" class="mt-4"></div>
+                            </div>
+                </div>
+
+                <div class="project">
+                  <h2>Consulta sobre la duracion de determinada pelicula ingresando su nombre</h2>
+                  <div>
+                    Una vez creada la columna con los nombres de cada película, las consultas se hacen buscando coincidencia exacta con el nombre almacenado.  
+                    <strong>Debe ingresar el nombre respetando mayúsculas y minúsculas</strong> tal como está contenido en el dataset.  
+                    Si no se encuentra coincidencia, se mostrará un mensaje indicando ingreso incorrecto.
+                  </div>
+
+                  <div id="seccion-enlaces-duracion" class="bloque-seccion">
+                    <h2>Consultar mediante entorno FastAPI</h2>
+
+                    <a href="#" class="btn_two"
+                       onclick="event.preventDefault(); window.open('https://p-1-streaming.onrender.com/docs#/default/peliculas_duracion_peliculas_duracion__Pelicula__get', '_blank', 'noopener');">
+                      Ir a /docs de FastAPI
+                    </a>
+
+                    <a href="https://p-1-streaming.onrender.com/peliculas_duracion/Jumanji"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn_two">
+                      /peliculas_duracion/Jumanji
+                    </a>
+                  </div>
+
+                  <div id="seccion-formulario-duracion" class="bloque-seccion">
+                    <h2>Buscar duración de película por nombre</h2>
+
+                    <form id="formDuracion">
+                      <label for="inputDuracion">Buscar duración por película (ej: Jumanji):</label>
+                      <input type="text" id="inputDuracion" placeholder="Ej: Titanic" required />
+                      <button type="submit" class="btn_one">Buscar</button>
+                    </form>
+                    <div id="resultadoDuracion" class="mt-4"></div>
+                   </div>
+                </div>
+                
+                <div class="project">
+                  <h2>Consulta sobre franquicias</h2>
+                  <div>
+                    Para esta función se obtuvo la información particular de cada película mediante el análisis paso a paso de los
+                    diccionarios correspondientes, o información anidada, para obtener solo el nombre de la franquicia asociado a cada ID de película.
+                    <br><br>
+                    Los siguientes botones permiten acceder a la documentación de la API o a una consulta de ejemplo. Para realizar una búsqueda personalizada, use el formulario debajo ingresando el nombre exacto de la franquicia (respetando mayúsculas y espacios).
+                  </div>
+
+                      <div id="seccion-enlaces-franquicia" class="bloque-seccion">
+                        <h3>Consultar API mediante FastAPI</h3>
+
+                        <a href="#" class="btn_two"
+                           onclick="event.preventDefault(); window.open('https://p-1-streaming.onrender.com/docs#/default/franquicia_franquicia__Franquicia__get', '_blank', 'noopener');">
+                          Ir a /docs de FastAPI
+                        </a>
+
+                        <a href="https://p-1-streaming.onrender.com/franquicia/Toy%20Story%20Collection"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn_two">
+                        franquicia/Toy Story Collection
+                        </a>
+                      </div>
+
+                      <div id="seccion-formulario-franquicia" class="bloque-seccion">
+                        <h3>Buscar películas por franquicia (API)</h3>
+
+                        <form id="formFranquicia">
+                          <label for="inputFranquicia">Ingrese el nombre exacto de la franquicia:</label>
+                          <input type="text" id="inputFranquicia" class="form-control" placeholder="Ej: Toy Story Collection" required />
+                          <button type="submit" class="btn_one">Buscar películas</button>
+                        </form>
+
+                        <div id="resultadoFranquicia" class="mt-4"></div>
+                      </div>
+                </div>
+
+                <div class="project">
+                  <h2>Consulta sobre cantidad de peliculas por determinado pais</h2>
+                  <div>
+                    Para esta función se obtuvo la información de cada país mediante el análisis paso a paso de la información contenida en la columna `production_countries`.
+                    Los botones siguientes permiten consultar directamente la API en modo documentación o ver un ejemplo de consulta.
+                    Para realizar una búsqueda personalizada, use el formulario ingresando el **nombre completo del país** (respetando mayúsculas y espacios).
+                  </div>
+
+                      <div id="seccion-enlaces-pais" class="bloque-seccion">
+                        <h3>Consultar API mediante FastAPI</h3>
+
+                        <a href="#" class="btn_two"
+                           onclick="event.preventDefault(); window.open('https://p-1-streaming.onrender.com/docs#/default/peliculas_pais_peliculas_pais__Pais__get', '_blank', 'noopener');">
+                          Ir a /docs de FastAPI
+                        </a>
+
+                        <a href="https://p-1-streaming.onrender.com/peliculas_pais/United%20States%20of%20America"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn_two">
+                          peliculas_pais/United States of America
+                        </a>
+                      </div>
+
+                      <div id="seccion-formulario-pais" class="bloque-seccion">
+                        <h3>Buscar películas por país (API)</h3>
+
+                        <form id="formPais">
+                          <label for="inputPais">Ingrese el nombre completo del país:</label>
+                          <input type="text" id="inputPais" class="form-control" placeholder="Ej: United States of America" required />
+                          <button type="submit" class="btn_one">Buscar cantidad de películas</button>
+                        </form>
+
+                        <div id="resultadoPais" class="mt-4"></div>
+                      </div>
+                </div>
+
+                <div class="project">
+                  <h2>Consulta sobre determinada productora y su informacion</h2>
+                  <div>
+                    Para esta función se obtuvo la información de cada productora mediante el análisis paso a paso de la columna correspondiente en el dataset.
+                    Los botones a continuación permiten:
+                    <ul>
+                      <li>Acceder a la documentación interactiva de la API (`/docs`).</li>
+                      <li>Ver un ejemplo de respuesta real con una productora predefinida.</li>
+                    </ul>
+                    También puedes realizar tu propia búsqueda ingresando el nombre exacto de la productora (respetando mayúsculas y puntuación) en el formulario.
+                  </div>
+
+                      <div id="seccion-enlaces-productora" class="bloque-seccion">
+                        <h3>Consultar API mediante FastAPI</h3>
+
+                        <a href="#" class="btn_two"
+                           onclick="event.preventDefault(); window.open('https://p-1-streaming.onrender.com/docs#/default/productoras_exitosas_productoras_exitosas__Productora__get', '_blank', 'noopener');">
+                          Ir a /docs de FastAPI
+                        </a>
+
+                        <a href="https://p-1-streaming.onrender.com/productoras_exitosas/Warner%20Bros."
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn_two">
+                          productoras_exitosas/Warner Bros.
+                        </a>
+                      </div>
+
+                      <div id="seccion-formulario-productora" class="bloque-seccion">
+                        <h3>Buscar películas por productora (API)</h3>
+
+                        <form id="formProductora">
+                          <label for="inputProductora">Ingrese el nombre de la productora:</label>
+                          <input type="text" id="inputProductora" class="form-control" placeholder="Ej: Warner Bros." required />
+                          <button type="submit" class="btn_one">Buscar información de la productora</button>
+                        </form>
+
+                        <div id="resultadoProductora" class="mt-4"></div>
+                      </div>
+                </div>
+
+                <div class="project">
+                  <h2>Consulta sobre cantidad de peliculas por director</h2>
+                  <div>
+                    Para esta función se obtuvo la información de cada director mediante el análisis de los datos relacionados con el trabajo (job) "Director" en el dataset.
+                    <ul>
+                      <li>El primer botón lleva a la documentación interactiva de la API (`/docs`).</li>
+                      <li>El segundo muestra una respuesta real con un director predefinido.</li>
+                    </ul>
+                    Puedes ingresar el nombre exacto de un director (respetando mayúsculas y minúsculas) para realizar tu propia búsqueda.
+                  </div>
+
+                      <div id="seccion-enlaces-director" class="bloque-seccion">
+                        <h3>Consultar API mediante FastAPI</h3>
+
+                        <a href="#" class="btn_two"
+                           onclick="event.preventDefault(); window.open('https://p-1-streaming.onrender.com/docs#/default/get_director_get_director__nombre_director__get', '_blank', 'noopener');">
+                          Ir a /docs de FastAPI
+                        </a>
+
+                        <a href="https://p-1-streaming.onrender.com/get_director/Michelle%20Danner"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn_two">
+                          get_director: Michelle Danner
+                        </a>
+                      </div>
+
+                      <div id="seccion-formulario-director" class="bloque-seccion">
+                        <h3>Buscar cantidad de películas por director (API)</h3>
+
+                        <form id="formDirector">
+                          <label for="inputDirector">Ingrese el nombre del director:</label>
+                          <input type="text" id="inputDirector" class="form-control" placeholder="Ej: Michelle Danner" required />
+                          <button type="submit" class="btn_one">Buscar películas dirigidas</button>
+                        </form>
+
+                        <div id="resultadoDirector" class="mt-4"></div>
+                      </div>
+                </div>
+
+                <div class="project">
+                  <h2>Consulta en modelo de recomendacion</h2>
+                  <div>
+                    Para esta función se utilizó información combinada de múltiples datasets, permitiendo generar recomendaciones basadas en similitudes entre películas.
+                    <ul>
+                      <li>El primer botón lleva a la documentación interactiva de la API (`/docs`).</li>
+                      <li>El segundo muestra un ejemplo con la película "Jumanji".</li>
+                    </ul>
+                    Puedes ingresar el nombre exacto de una película (respetando mayúsculas y minúsculas) para obtener recomendaciones personalizadas.
+                  </div>
+
+                      <div id="seccion-enlaces-recomendacion" class="bloque-seccion">
+                        <h3>Consultar API mediante FastAPI</h3>
+
+                        <a href="#" class="btn_two"
+                           onclick="event.preventDefault(); window.open('https://p-1-streaming.onrender.com/docs#/default/recomendacion_recomendacion__titulo__get', '_blank', 'noopener');">
+                          Ir a /docs de FastAPI
+                        </a>
+
+                        <a href="https://p-1-streaming.onrender.com/recomendacion/Jumanji"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="btn_two">
+                          recomendacion: Jumanji
+                        </a>
+                      </div>
+
+                      <div id="seccion-formulario-recomendacion" class="bloque-seccion">
+                        <h3>Obtener recomendaciones por título de película</h3>
+
+                        <form id="formRecomendacion">
+                          <label for="inputRecomendacion">Ingrese el título de la película:</label>
+                          <input type="text" id="inputRecomendacion" class="form-control" placeholder="Ej: Jumanji" required />
+                          <button type="submit" class="btn_one">Obtener recomendaciones</button>
+                        </form>
+
+                        <div id="resultadoRecomendacion" class="mt-4"></div>
+                      </div>
+                </div>           
+           </div>
+    </div>
+    
+    <footer id="footer">
+        <p>Desarrollado por <strong>Héctor Fernando Calisaya</strong> - &copy; 2025 - Todos los derechos reservados</p>
+        
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="index.js" type="text/javascript"></script>
+
+</body>
+</html>

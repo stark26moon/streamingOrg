@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análisis de Plataformas de Streaming</title>
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+  <link rel="stylesheet" href="index.css">
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+
+  <!-- Encabezado -->
+  <header id="header" class="animated slideInDown" style="animation-delay: 1.8s;">
+    <h1 id="title">Análisis de Plataformas de Streaming</h1>
+  </header>
+
+  <!-- Descripción -->
+  <section id="middle" class="animated zoomIn" style="animation-delay: 1.8s;">
+    <p>
+      Análisis del rendimiento de películas por plataforma de streaming. El análisis fue realizado en Python, incluyendo procesos de ETL y EDA, y ofrece resultados visualizables e interactivos.
+    </p>
+  </section>
+
+  <!-- Gráfico principal -->
+  <section id="chartContainer" style="max-width: 700px; margin: 40px auto;">
+    <canvas id="myChart"></canvas>
+  </section>
+
+  <!-- Sección de consultas -->
+  <main id="portfolio">
+    <div id="work">
+      <!-- Proyecto: Consulta por idioma -->
+      <article class="project">
+        <h2>Cantidad de películas por idioma</h2>
+        <p>
+          Consulta la cantidad de películas disponibles en un idioma específico. Ingresa la abreviatura ISO del idioma (por ejemplo: en, es, fr).
+        </p>
+        <a href="https://p-1-streaming.onrender.com/docs#/default/peliculas_idioma_peliculas_idioma__Idioma__get" target="_blank">
+          <button class="btn_two">Ver en /docs</button>
+        </a>
+        <a href="https://p-1-streaming.onrender.com/peliculas_idioma/en" target="_blank">
+          <button class="btn_two">Ejemplo: "en"</button>
+        </a>
+
+        <form id="searchForm">
+          <label for="language">Idioma:</label>
+          <input type="text" id="language" placeholder="Ejemplo: en, es, fr">
+          <button type="submit">Buscar</button>
+        </form>
+        <div id="resultContainer"></div>
+      </article>
+
+      <!-- Resto de los proyectos... (Duración, Franquicias, País, Productora, Director, Recomendación) -->
+      <!-- Puedes seguir este mismo formato para cada uno -->
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer id="footer">
+    <p>Desarrollado por Héctor Fernando Calisaya</p>
+  </footer>
+
+  <!-- JS -->
+  <scri
